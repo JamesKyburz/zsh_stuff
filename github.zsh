@@ -36,3 +36,24 @@ github-create() {
     echo " done."
   fi
 }
+
+# you need to npm i -g create-files pkginit for this
+create-os-project() {
+  project=$1
+  if [ "$project" = "" ]; then
+    read project\?"project name? "
+  fi
+
+  if [ "$project" != "" ]; then
+    mkdir -p $project
+    cd $project
+    git init
+    github-create
+    pkginit
+    create-files
+    mkdir -p test
+    npm i
+    echo "start coding!"
+  fi
+}
+
