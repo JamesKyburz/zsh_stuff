@@ -6,7 +6,7 @@ clear-greenkeeper-branches() {
 }
 
 clear-all-greenkeeper-stuff() {
-  cd ~/Documents/src
+  cd $cdpath
   user=$(git config --get user.username)
   for repo in $(greenkeeper list | sed 's/$user\///g'); do
     cd $repo
