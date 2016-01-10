@@ -1,7 +1,8 @@
 # you need to npm i -g hihat install-missing for this
-hh() {
-  if [ "$args" = "$mac" ]; then
-    args="--frame"
-  fi
-  NPM_ARGS=-SE hihat index.js ${args} -- -p $(which install-missing)
+hhb() {
+  NPM_ARGS=-SE hihat --frame 800,800 $1 shift -- -p $(which install-missing) $*
+}
+
+hhn() {
+  NPM_ARGS=-SE hihat --node $*
 }
