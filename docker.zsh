@@ -11,6 +11,12 @@ docker-env() {
   export DOCKER_HOST=$(docker-machine url $1)
   export DOCKER_MACHINE_NAME=$1
   export DOCKER_TLS_VERIFY=0
+  test=$(docker ps 2>&1)
+  if [ $? = 0 ]; then
+  else
+    api_version=$(echo $test | sed s'/.*server API version: \(.*\))/\1/')
+    export DOCKER_API_VERSION=$api_version
+  fi
   export PS1="docker $1 $__PS1"
 }
 
