@@ -12,8 +12,7 @@ docker-env() {
   export DOCKER_MACHINE_NAME=$1
   export DOCKER_TLS_VERIFY=0
   test=$(docker ps 2>&1)
-  if [ $? = 0 ]; then
-  else
+  if [ $? != 0 ]; then
     api_version=$(echo $test | sed s'/.*server API version: \(.*\))/\1/')
     export DOCKER_API_VERSION=$api_version
   fi
