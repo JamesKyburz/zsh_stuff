@@ -19,6 +19,11 @@ docker-env() {
   export PS1="docker $1 $__PS1"
 }
 
+docker-unenv() {
+  eval $(export | grep DOCKER | sed s'/^\(DOCKER[A-Z_]*\).*$/unset \1/g')
+  export PS1="$__PS1"
+}
+
 docker-ssh() {
   ssh root@$(docker-machine ip $1) -i ~/.docker/machine/machines/$1/id_rsa
 }
