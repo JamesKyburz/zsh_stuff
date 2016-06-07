@@ -1,3 +1,5 @@
+export __PS1=$PS1
+
 docker-production() {
   docker-env "production"
 }
