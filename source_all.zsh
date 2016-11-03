@@ -1,6 +1,7 @@
-source_it() {
-  if [ "$1" != "all.zsh" ]; then
-    source $1
+#!/usr/bin/env zsh
+
+for file in *.zsh; do
+  if [ "$file" != `basename $0` ]; then
+    source $file;
   fi
-}
-for file in *.zsh; do source_it $file; done
+done
