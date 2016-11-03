@@ -1,7 +1,10 @@
 #!/usr/bin/env zsh
+#
 
-for file in *.zsh; do
-  if [ "$file" != `basename $0` ]; then
+DIR=$(dirname $0)
+
+for file in $DIR/*.zsh; do
+  if [ "$file" != "$0" ]; then
     source $file;
   fi
 done
