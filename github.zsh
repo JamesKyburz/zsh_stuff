@@ -57,3 +57,22 @@ create-os-project() {
   fi
 }
 
+function gist() {
+  local url=""
+
+  # if there's nothing piped on STDIN
+  if [ -t 0 ]; then
+    # and there's no arguments...
+    if ((! $# )); then
+      # take what's onthe clipboard and paste it in a new gist
+      command gist -Pcop -f paste.txt
+    else
+      # create a gist based on the arguments give
+      command gist -cop $@
+    fi
+  else
+    # otherwise, create a gist, with arguments, but use the
+    # content from STDIN
+    command gist -cop $@ < /dev/stdin
+  fi
+}
