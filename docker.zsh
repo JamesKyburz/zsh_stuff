@@ -12,6 +12,11 @@ docker-screen() {
   screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
 }
 
+docker-gc() {
+  docker rm $(docker ps -qa)
+  docker rmi $(sudo docker images -f "dangling=true" -q)
+}
+
 docker-env() {
   export DOCKER_CERT_PATH=~/.docker/machine/machines/$1
   export DOCKER_HOST=$(docker-machine url $1)
