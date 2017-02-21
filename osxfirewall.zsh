@@ -5,13 +5,13 @@ restart-firewall() {
 
 enable-disable-firewall() {
   sudo defaults write /Library/Preferences/com.apple.alf globalstate -int $1
-  restart_firewall
+  restart-firewall
 }
 
 enable-firewall() {
-  enable_disable_firewall 1
+  enable-disable-firewall 1
 }
 
 disable-firewall() {
-  enable_disable_firewall 0
+  enable-disable-firewall 0
 }
