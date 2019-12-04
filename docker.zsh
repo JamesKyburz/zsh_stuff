@@ -38,3 +38,7 @@ docker-unenv() {
 docker-ssh() {
   ssh root@$(docker-machine ip $1) -i ~/.docker/machine/machines/$1/id_rsa
 }
+
+dps () {
+	docker ps --format "table {{ .ID }}\t{{ .Names }}\t{{ .Status }}\t{{ .Ports }}"
+}
